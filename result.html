@@ -1,0 +1,50 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction Result</title>
+    <style>
+        body {
+            background-color: #3498db; /* Blue background color */
+            color: white; /* White text color */
+            font-size: 25px; /* Increased font size to 25 */
+            text-align: center; /* Center-aligned text */
+        }
+
+        #result-container {
+            max-width: 400px;
+            margin: 50px auto; /* Centered container */
+            background-color: #ffffff; /* White container background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #result-container p {
+            line-height: 12px; /* Increased spacing between lines to 12 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Approval Prediction Result</h1>
+    <p>The loan is: <strong>{{ loan_approval }}</strong></p>
+
+    {% if reasons %}
+        <h2>Reasons:</h2>
+        <p>
+            {% if loan_approval == 'Approved' %}
+                chances of risk being low
+            {% else %}
+                chances of risk being high
+            {% endif %}
+        </p>
+        <ul>
+            <li><p>Risk Chance: {{ reasons['Risk Chance'] }}</p></li>
+        </ul>
+    {% endif %}
+
+    <p><a href="/">Go back to the prediction form</a></p>
+</body>
+</html>

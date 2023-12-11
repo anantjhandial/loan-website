@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Status Prediction</title>
+    <style>
+        body {
+            background-color: #3498db; /* Blue background color */
+            color: white; /* White text color */
+            font-size: 25px; /* Increased font size to 25 */
+            text-align: center; /* Center-aligned text */
+        }
+
+        #form-container {
+            max-width: 400px;
+            margin: 50px auto; /* Centered form */
+            background-color: #ffffff; /* White form background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .input-container label {
+            flex: 1;
+            text-align: left;
+        }
+
+        .input-container input {
+            flex: 1;
+            text-align: right;
+        }
+
+        button {
+            width: 100%; /* Make the button full-width */
+        }
+    </style>
+</head>
+<body>
+    <h1>Loan Status Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="Gender">Gender:</label>
+        <select name="Gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label for="Married">Married:</label>
+        <select name="Married" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="Dependents">Dependents:</label>
+        <input type="text" name="Dependents" required><br>
+
+        <label for="Education">Education:</label>
+        <select name="Education" required>
+            <option value="Graduate">Graduate</option>
+            <option value="Not Graduate">Not Graduate</option>
+        </select><br>
+
+        <label for="Self_Employed">Self Employed:</label>
+        <select name="Self_Employed" required>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select><br>
+
+        <label for="ApplicantIncome">Applicant Income:</label>
+        <input type="number" name="ApplicantIncome" required><br>
+
+        <label for="CoapplicantIncome">Coapplicant Income:</label>
+        <input type="number" name="CoapplicantIncome" required><br>
+
+        <label for="LoanAmount">Loan Amount:</label>
+        <input type="number" name="LoanAmount" required><br>
+
+        <label for="Loan_Amount_Term">Loan Amount Term (months):</label>
+        <input type="number" name="Loan_Amount_Term" required><br>
+
+        <label for="Credit_History">Credit History:</label>
+        <select name="Credit_History" required>
+            <option value="1.0">1.0</option>
+            <option value="0.0">0.0</option>
+        </select><br>
+
+        <label for="Property_Area">Property Area:</label>
+        <select name="Property_Area" required>
+            <option value="Urban">Urban</option>
+            <option value="Semiurban">Semiurban</option>
+            <option value="Rural">Rural</option>
+        </select><br>
+        <input type="submit" value="Predict Loan Approval">
+    </form>
+</body>
+</html>

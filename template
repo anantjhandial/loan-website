@@ -1,0 +1,41 @@
+import pandas as pd
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import accuracy_score
+import joblib
+
+
+df = pd.read_csv('LoanApprovalPrediction.csv')
+
+# Drop the 'Loan_ID' 
+df = df.drop('Loan_ID', axis=1)
+
+# dropped missing values 
+df = df.dropna()
+
+# categorical variables to numerical 
+le = LabelEncoder()
+categorical_columns = df.select_dtypes(include=['object']).columns
+for column in categorical_columns:
+    df[column] = le.fit_transform(df[column])
+
+#  seperate (X) and  (y)
+X = df.drop('Loan_Status', axis=1)
+y = df['Loan_Status']
+
+#  training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# RandomForestClassifier
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+
+# Train 
+clf.fit(X_train, y_train)
+
+y_pred = clf.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print(f'Accuracy: {accuracy * 100:.2f}%')
+
+# Save 
+joblib.dump(clf, 'trained_model.joblib')
